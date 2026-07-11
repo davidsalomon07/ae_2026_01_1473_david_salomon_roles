@@ -10,8 +10,10 @@ import com.pucetec.roles.services.TicketService
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest
 import org.springframework.test.context.bean.override.mockito.MockitoBean
+import org.springframework.context.annotation.Import
+import com.pucetec.roles.config.SecurityConfig
 import org.springframework.http.MediaType
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt
@@ -22,6 +24,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDateTime
 
 @WebMvcTest(controllers = [ParkingSpaceController::class, TicketController::class])
+@Import(SecurityConfig::class)
 class SecurityControllerTest {
 
     @Autowired
@@ -103,7 +106,8 @@ class SecurityControllerTest {
     @Test
     fun `POST entry con rol USER devuelve 201 Created`() {
         val request = EntryRequest(plate = "ABC-1234", parkingSpaceId = 1L)
-        val response = TicketResponse(id = 1L, plate = "ABC-1234", entryTime = LocalDateTime.now(), exitTime = null)
+        val spaceResponse = ParkingSpaceResponse(id = 1L, code = "A10", occupied = true)
+        val response = TicketResponse(id = 1L, plate = "ABC-1234", entryTime = LocalDateTime.now(), exitTime = null, parkingSpace = spaceResponse)
         `when`(ticketService.registerEntry(request)).thenReturn(response)
 
         mockMvc.perform(
@@ -138,7 +142,8 @@ class SecurityControllerTest {
     @Test
     fun `POST exit con rol USER devuelve 200 Ok`() {
         val request = ExitRequest(ticketId = 1L)
-        val response = TicketResponse(id = 1L, plate = "ABC-1234", entryTime = LocalDateTime.now().minusHours(1), exitTime = LocalDateTime.now())
+        val spaceResponse = ParkingSpaceResponse(id = 1L, code = "A10", occupied = false)
+        val response = TicketResponse(id = 1L, plate = "ABC-1234", entryTime = LocalDateTime.now().minusHours(1), exitTime = LocalDateTime.now(), parkingSpace = spaceResponse)
         `when`(ticketService.registerExit(request)).thenReturn(response)
 
         mockMvc.perform(

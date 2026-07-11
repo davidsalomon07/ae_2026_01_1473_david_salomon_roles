@@ -1,0 +1,140 @@
+{
+  "info": {
+    "_postman_id": "0d57e3b2-cc21-45c3-92a5-8ad3de7fc206",
+    "name": "parking-roles",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55416166",
+    "_collection_link": "https://go.postman.co/collection/55416166-0d57e3b2-cc21-45c3-92a5-8ad3de7fc206?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8787/parking-spaces/available",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8787",
+          "path": [
+            "parking-spaces",
+            "available"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8787/parking-spaces",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{auth_secret_079o}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"code\": \"A2\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8787/parking-spaces",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8787",
+          "path": [
+            "parking-spaces"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8787/tickets/entry",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJraWQiOiJ3OHJyVytRd0YyRzQ5WEtUUGRocFZrMnBIcGlSMFhrc1VTQTczZklrZEtJPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIxNDI4NjRkOC1iMGYxLTcwNzktZGNjZC1jMTZjNzViMmFiOTYiLCJjb2duaXRvOmdyb3VwcyI6WyJVU0VSIl0sImlzcyI6Imh0dHBzOi8vY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vdXMtZWFzdC0xX2xzWGlOSnVBWCIsInZlcnNpb24iOjIsImNsaWVudF9pZCI6Ijd1NTFhcm5ta3Myc3JlYjkzNGp2dTgyZ21nIiwiZXZlbnRfaWQiOiJjYjczZTc2Ni1lMmI4LTRmMTgtOThkNi00YTc2ZTVkYzViNGYiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiYXV0aF90aW1lIjoxNzgzNzUwMTU4LCJleHAiOjE3ODM3NTM3NTgsImlhdCI6MTc4Mzc1MDE1OSwianRpIjoiMWEzMjlhNzItZTFhZS00OGUwLTk2NTktZTk5OWM2OGZiNzgxIiwidXNlcm5hbWUiOiJ1c2VyX3BhcmtpbmcifQ.lle2PhfMEi8WN_QVAcvWfN2mMQcejA3TSi55T67Natwul8N6fs1-JjAHDJOwFfPTUE1oXio5Ozjbea_WPCX4EJUEm1nQq-LE3P3VqzKX8VuPHwReWuMrRA-HV510VKjkAR0L9hDmGeZ9oPMY_1yCTA0VIcd6lzTeSwXQ0xkyJLfoP0XsI5QBOhNZZVGC6Vv_b2nKbXg5F9dQ6dtZ9EbSUYMhjERpb8OI4WLBWCxC59wtqkdDq5axaMfscdOKGSAGYCY4jGrAZvx74a78GSJm-BMChYgQ9pg0MKlCZpxVAVl6gaJma8yIS69tkHH9U8-sAwLA7u9ICRu8kX6EqU4RmA",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"plate\": \"XYZ-9999\",\r\n  \"parkingSpaceId\": 1\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8787/tickets/entry",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8787",
+          "path": [
+            "tickets",
+            "entry"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8787/parking-spaces/available",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8787/parking-spaces/available",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8787",
+          "path": [
+            "parking-spaces",
+            "available"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "auth_secret_079o",
+      "secret": true
+    }
+  ]
+}
