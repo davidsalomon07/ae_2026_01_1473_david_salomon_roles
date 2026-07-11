@@ -16,13 +16,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          # Issuer del User Pool del curso (autenticación básica del examen).
-          # Spring descarga el JWKS de {issuer-uri}/.well-known/openid-configuration
-          # y con él valida firma, emisor (iss) y expiración (exp) de cada access token.
-          #
-          # 👉 En el DEBER (homework_roles.md) reemplazarás esto por el issuer-uri de TU PROPIO
-          #    User Pool, para poder crear los grupos ADMIN/USER y hacer autorización por roles.
-          issuer-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_yzwNALI2A
+          issuer-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_lsXiNJuAX
 
 server:
   port: 8787
